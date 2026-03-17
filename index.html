@@ -30,12 +30,11 @@
         .switch-btn.active { background: #ff4444; color: #fff; }
 
         .toggle-wrapper { display: flex; align-items: center; margin-top: 15px; background: #1a1a1a; padding: 10px; border-radius: 6px; border: 1px solid #333;}
-        .toggle-wrapper.sub-toggle { margin-top: 5px; border: 1px dashed #333; background: #151515;}
         .toggle-wrapper input[type="checkbox"] { width: 18px; height: 18px; margin: 0 10px 0 0; cursor: pointer; accent-color: var(--ax1); }
         .toggle-wrapper label { margin: 0; color: #ccc; cursor: pointer; font-size: 13px; text-transform: none; font-weight: bold;}
         .toggle-wrapper input[type="checkbox"]:disabled + label { color: #555; cursor: not-allowed; }
 
-        .range-wrapper { background: #1a1a1a; padding: 10px; border-radius: 6px; border: 1px solid #333; margin-top: 5px; margin-bottom: 10px; transition: opacity 0.2s;}
+        .range-wrapper { background: #1a1a1a; padding: 15px 10px; border-radius: 6px; border: 1px solid #333; margin-top: 10px; margin-bottom: 10px; transition: opacity 0.2s;}
         .range-wrapper.disabled { opacity: 0.4; pointer-events: none; }
         .controls input[type="range"] { width: 100%; margin-top: 8px; accent-color: var(--ax1); cursor: pointer;}
         .range-labels { display: flex; justify-content: space-between; font-size: 10px; color: #666; margin-top: 4px;}
@@ -67,16 +66,16 @@
         .mock-nav-container > .mock-root:nth-child(10n+10) { --fc-color: var(--fc-rb-c-10); --fc-icon: var(--fc-rb-i-10); --fc-muted: color-mix(in srgb, var(--fc-color) 15%, transparent); }
 
 		.mock-nav-container > .mock-root {
-		border-left: 6px solid var(--fc-color) !important;
-		border-top: 1px solid var(--fc-color) !important;
-		border-right: 1px solid var(--fc-color) !important;
-		border-bottom: 1px solid var(--fc-color) !important;
-		border-radius: 6px !important;
-		margin-bottom: 6px !important;
-		background-color: transparent !important;
-		padding-bottom: 4px;
-		transition: all 0.2s ease;
-}
+            border-left: 6px solid var(--fc-color) !important;
+            border-top: 1px solid var(--fc-color) !important;
+            border-right: 1px solid var(--fc-color) !important;
+            border-bottom: 1px solid var(--fc-color) !important;
+            border-radius: 6px !important;
+            margin-bottom: 6px !important;
+            background-color: transparent !important;
+            padding-bottom: 4px;
+            transition: all 0.2s ease;
+        }
         .mock-folder-text {
             color: var(--fc-color, var(--tx2)) !important;
             font-weight: 800 !important;
@@ -191,17 +190,19 @@
             <label for="rbIn">Enable Rainbow Folders</label>
         </div>
 
-        <div class="toggle-wrapper sub-toggle">
-            <input type="checkbox" id="rbOriginalIn" checked>
-            <label for="rbOriginalIn">Use Original Pastels (Fixed)</label>
-        </div>
-
         <div class="range-wrapper" id="sliderWrapper">
-            <label style="margin-top: 0; color: #ccc;">Pastel Intensity (Formula)</label>
-            <input type="range" id="rbIntensityIn" min="0" max="100" value="50">
+            <label style="margin-top: 0; color: #ccc;">Color Purity (Pastel ↔ Neon)</label>
+            <input type="range" id="rbSatIn" min="0" max="100" value="50">
             <div class="range-labels">
-                <span>Soft (Pale)</span>
-                <span>Vivid (Deep)</span>
+                <span>Soft/Pastel</span>
+                <span>Vivid/Neon</span>
+            </div>
+
+            <label style="margin-top: 15px; color: #ccc;">Contrast (Visibility)</label>
+            <input type="range" id="rbLightIn" min="0" max="100" value="50">
+            <div class="range-labels">
+                <span>Muted</span>
+                <span>High Contrast</span>
             </div>
         </div>
         
@@ -339,19 +340,6 @@
 <script>
     let generatedJSONData = {};
 
-    const exactOriginalColors = [
-        { c: "#F28FAD", i: "#D96088" },
-        { c: "#F8BD96", i: "#D98A59" },
-        { c: "#FAE3B0", i: "#D6B56F" },
-        { c: "#ABE9B3", i: "#69B373" },
-        { c: "#89DCEB", i: "#4AA8BA" },
-        { c: "#96CDFB", i: "#5B9CD6" },
-        { c: "#DDB6F2", i: "#AD78CE" },
-        { c: "#F5C2E7", i: "#D184BB" },
-        { c: "#C9CBFF", i: "#8E91D6" },
-        { c: "#B5E8E0", i: "#74B8AE" } 
-    ];
-
     function hexToHsl(hex) {
         let r=parseInt(hex.slice(1,3),16)/255, g=parseInt(hex.slice(3,5),16)/255, b=parseInt(hex.slice(5,7),16)/255;
         let max=Math.max(r,g,b), min=Math.min(r,g,b), h=0, s=0, l=(max+min)/2;
@@ -412,27 +400,23 @@
         const axHex = document.getElementById('axIn').value;
         const fontVal = document.getElementById('fontIn') ? document.getElementById('fontIn').value : 'sans-serif';
         const rbOn = document.getElementById('rbIn').checked;
-        const rbOriginal = document.getElementById('rbOriginalIn').checked;
-        const rbIntensity = parseInt(document.getElementById('rbIntensityIn').value);
         const mode = document.getElementById('modeIn').value; 
         
-        const originalToggle = document.getElementById('rbOriginalIn');
+        const rbSat = parseInt(document.getElementById('rbSatIn').value);
+        const rbLight = parseInt(document.getElementById('rbLightIn').value);
+        
         const sliderWrapper = document.getElementById('sliderWrapper');
-        const sliderInput = document.getElementById('rbIntensityIn');
+        const satInput = document.getElementById('rbSatIn');
+        const lightInput = document.getElementById('rbLightIn');
 
         if (!rbOn) {
-            originalToggle.disabled = true;
             sliderWrapper.classList.add('disabled');
-            sliderInput.disabled = true;
+            satInput.disabled = true;
+            lightInput.disabled = true;
         } else {
-            originalToggle.disabled = false;
-            if (rbOriginal) {
-                sliderWrapper.classList.add('disabled');
-                sliderInput.disabled = true;
-            } else {
-                sliderWrapper.classList.remove('disabled');
-                sliderInput.disabled = false;
-            }
+            sliderWrapper.classList.remove('disabled');
+            satInput.disabled = false;
+            lightInput.disabled = false;
         }
         
         let b = hexToHsl(bgHex);
@@ -542,31 +526,38 @@
             [`FreeColors@@titlebar-text-color-focused${mode}`]: tx1, [`FreeColors@@titlebar-text-color${mode}`]: tx2,
             [`FreeColors-cards-style@@cards-background${mode}`]: bg2, [`FreeColors-cards-style@@cards-background-hover (hover)${mode}`]: bg3,
             
+            // Legacy fallbacks kept for Obsidian theme compatibility
             [`FreeColors@@color-red${mode}`]: "#F28FAD", [`FreeColors@@color-orange${mode}`]: "#F8BD96",
             [`FreeColors@@color-yellow${mode}`]: "#FAE3B0", [`FreeColors@@color-green${mode}`]: "#ABE9B3",
             [`FreeColors@@color-cyan${mode}`]: "#89DCEB", [`FreeColors@@color-blue${mode}`]: "#96CDFB",
             [`FreeColors@@color-purple${mode}`]: "#DDB6F2", [`FreeColors@@color-pink${mode}`]: "#F5C2E7"
         };
 
-        // --- RAINBOW CALCULATION ---
+        // --- DUAL ENGINE RAINBOW CALCULATION ---
         for(let i=0; i<10; i++) {
             let color, icon, mutedJson;
             
             if(rbOn) {
-                if(rbOriginal) {
-                    color = exactOriginalColors[i].c;
-                    icon = exactOriginalColors[i].i;
-                    mutedJson = mixHex(color, bg2, 0.15); // Used only for JSON export
+                // Hue (Renk açısı) senin 144 derece "Bitişik Kontrast" formülünle atlıyor
+                let cH = (aH + i * 144) % 360;
+                
+                // Saturation (Doygunluk) slider'ı: %0'da Pastel/Soluk (%40), %100'de Neon (%100) yapar
+                let cS = 40 + (rbSat / 100) * 60; 
+                
+                // Lightness (Parlaklık) slider'ı: Karanlık ve Aydınlık tema için ters orantılı görünürlük koruması
+                let cL, iL;
+                if(isDark) {
+                    cL = 60 + (rbLight / 100) * 25; // Dark mode: %60 (Muted) ile %85 (High Contrast) arası
                 } else {
-                    let cH = (aH + i * 144) % 360;
-                    let cS = 25 + (rbIntensity / 100) * 50; 
-                    let cL = isDark ? (75 - (rbIntensity / 100) * 20) : (50 - (rbIntensity / 100) * 25);
-                    let iL = isDark ? Math.max(10, cL - 25) : Math.max(10, cL - 15);
-                    
-                    color = hslToHex(cH, cS, cL);
-                    icon = hslToHex(cH, cS, iL);
-                    mutedJson = mixHex(color, bg2, 0.15); // Used only for JSON export
+                    cL = 45 - (rbLight / 100) * 20; // Light mode: %45 (Muted) ile %25 (High Contrast) arası
                 }
+                
+                // İkonlar metinden her zaman bir tık daha farklı/geride durmalı
+                iL = isDark ? Math.max(10, cL - 20) : Math.min(90, cL + 20);
+                
+                color = hslToHex(cH, cS, cL);
+                icon = hslToHex(cH, cS, iL);
+                mutedJson = mixHex(color, bg2, 0.15); // CSS arka planları ve hover için %15 transparan
             } else {
                 color = tx1;
                 icon = tx2;
@@ -578,7 +569,7 @@
 
             generatedJSONData[`FreeColors@@fc-rb-c-${i+1}${mode}`] = color;
             generatedJSONData[`FreeColors@@fc-rb-i-${i+1}${mode}`] = icon;
-            generatedJSONData[`FreeColors@@fc-rb-m-${i+1}${mode}`] = mutedJson; // Export the generated Hex
+            generatedJSONData[`FreeColors@@fc-rb-m-${i+1}${mode}`] = mutedJson; // İndirilen JSON'a göm
         }
     }
 
@@ -599,7 +590,8 @@
 
     buildMockTree();
     
-    const inputs = ['bgIn', 'axIn', 'rbIn', 'rbOriginalIn', 'rbIntensityIn', 'fontIn'];
+    // Orijinal checkbox event listener'ı silindi, yeni çift slider eklendi
+    const inputs = ['bgIn', 'axIn', 'rbIn', 'rbSatIn', 'rbLightIn', 'fontIn'];
     inputs.forEach(id => {
         let el = document.getElementById(id);
         if (el) el.addEventListener('input', generateColors);
@@ -609,5 +601,3 @@
 </script>
 </body>
 </html>
-
-

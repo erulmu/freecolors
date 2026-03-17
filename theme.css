@@ -133,12 +133,12 @@ body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-f
 
 body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-files-container > div > .nav-folder,
 body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder.mod-root > .nav-folder-children > .nav-folder {
-    border-left: 3px solid var(--fc-color) !important;
-    border-top: 1px solid color-mix(in srgb, var(--fc-color), transparent 50%) !important;
-    border-right: 1px solid color-mix(in srgb, var(--fc-color), transparent 50%) !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--fc-color), transparent 50%) !important;
-    border-radius: 4px !important;
-    margin-bottom: 4px !important;
+    border-left: 2px solid var(--fc-color) !important;
+    border-top: 1px solid var(--fc-muted) !important;
+    border-right: 1px solid var(--fc-muted) !important;
+    border-bottom: 1px solid var(--fc-muted) !important;
+    border-radius: 5px !important;
+    margin-bottom: 5px !important;
 }
 
 body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder-collapse-indicator svg { display: none !important; }
@@ -2269,147 +2269,147 @@ settings:
 	- 
         id: fc-rb-c-1
         title: Folder 1 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-1
         title: Folder 1 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-1
         title: Folder 1 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-2
         title: Folder 2 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-2
         title: Folder 2 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-2
         title: Folder 2 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-3
         title: Folder 3 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-3
         title: Folder 3 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-3
         title: Folder 3 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-4
         title: Folder 4 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-4
         title: Folder 4 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-4
         title: Folder 4 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-5
         title: Folder 5 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-5
         title: Folder 5 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-5
         title: Folder 5 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-6
         title: Folder 6 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-6
         title: Folder 6 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-6
         title: Folder 6 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-7
         title: Folder 7 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-7
         title: Folder 7 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-7
         title: Folder 7 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-8
         title: Folder 8 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-8
         title: Folder 8 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-8
         title: Folder 8 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-9
         title: Folder 9 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-9
         title: Folder 9 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-9
         title: Folder 9 - Muted Background
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-c-10
         title: Folder 10 - Main Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-i-10
         title: Folder 10 - Icon Color
-        type: variable-color
+        type: variable-themed-color
         format: hex
     - 
         id: fc-rb-m-10
@@ -2537,3 +2537,39 @@ settings:
 
 */
 
+/* ==========================================================
+   CONTENT OS: OVERRIDE PATCH
+   (Strictly based on --fc-color and --fc-muted generated by HTML)
+   ========================================================== */
+
+/* 1. Folder Name Colors (Main color from HTML) */
+body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder > .tree-item-self.nav-folder-title > .tree-item-inner.nav-folder-title-content {
+    color: var(--fc-color) !important;
+}
+
+/* 2. Folder Hover and Active States (15% color generated by HTML mixHex) */
+body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder > .tree-item-self.nav-folder-title:hover,
+body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder > .tree-item-self.nav-folder-title.is-active {
+    background-color: var(--fc-muted) !important;
+    border-radius: 4px;
+}
+
+/* 3. File Hover and Active States (Inherits the 15% color of its parent folder) */
+body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder .tree-item-self.nav-file-title:hover,
+body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder .tree-item-self.nav-file-title.is-active {
+    background-color: var(--fc-muted) !important;
+    border-radius: 4px;
+}
+
+/* 4. Root Folders (Main Channels) - Bold (1800) */
+body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-files-container > div > .nav-folder > .tree-item-self.nav-folder-title > .tree-item-inner.nav-folder-title-content,
+body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder.mod-root > .nav-folder-children > .nav-folder > .tree-item-self.nav-folder-title > .tree-item-inner.nav-folder-title-content {
+    font-weight: 1000 !important; 
+    letter-spacing: 0.03em !important; /* Slight letter spacing to improve readability */
+}
+
+/* 5. Sub-Folders (Sub-Categories) - Semi-Bold (650) */
+body.fc-enable-rainbow .workspace-leaf-content[data-type="file-explorer"] .nav-folder .nav-folder-children .nav-folder > .tree-item-self.nav-folder-title > .tree-item-inner.nav-folder-title-content {
+    font-weight: 650 !important; 
+    letter-spacing: normal !important;
+}
