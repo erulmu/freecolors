@@ -1,0 +1,11 @@
+/* FreeColors Rainbow Deterministic Folder Binding */
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="1"] { --fc-color: var(--fc-rb-c-1) !important; --fc-icon: var(--fc-rb-i-1) !important; --fc-muted: var(--fc-rb-m-1) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="2"] { --fc-color: var(--fc-rb-c-2) !important; --fc-icon: var(--fc-rb-i-2) !important; --fc-muted: var(--fc-rb-m-2) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="3"] { --fc-color: var(--fc-rb-c-3) !important; --fc-icon: var(--fc-rb-i-3) !important; --fc-muted: var(--fc-rb-m-3) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="4"] { --fc-color: var(--fc-rb-c-4) !important; --fc-icon: var(--fc-rb-i-4) !important; --fc-muted: var(--fc-rb-m-4) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="5"] { --fc-color: var(--fc-rb-c-5) !important; --fc-icon: var(--fc-rb-i-5) !important; --fc-muted: var(--fc-rb-m-5) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="6"] { --fc-color: var(--fc-rb-c-6) !important; --fc-icon: var(--fc-rb-i-6) !important; --fc-muted: var(--fc-rb-m-6) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="7"] { --fc-color: var(--fc-rb-c-7) !important; --fc-icon: var(--fc-rb-i-7) !important; --fc-muted: var(--fc-rb-m-7) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="8"] { --fc-color: var(--fc-rb-c-8) !important; --fc-icon: var(--fc-rb-i-8) !important; --fc-muted: var(--fc-rb-m-8) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="9"] { --fc-color: var(--fc-rb-c-9) !important; --fc-icon: var(--fc-rb-i-9) !important; --fc-muted: var(--fc-rb-m-9) !important; }
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder[data-fc-index="10"] { --fc-color: var(--fc-rb-c-10) !important; --fc-icon: var(--fc-rb-i-10) !important; --fc-muted: var(--fc-rb-m-10) !important; }

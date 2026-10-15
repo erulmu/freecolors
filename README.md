@@ -47,6 +47,9 @@ The Rainbow Folders module is now built directly into the theme. To activate it:
 2. Toggle **"Enable Rainbow Folders"** to **ON**.
 3. The folder hierarchy will instantly use the custom rainbow colors defined in your JSON profile.
 
+> **💡 Sticky Rainbow Colors (Helper Snippet / Micro-Plugin):**
+> Obsidian's virtualized scrolling may recycle DOM elements on deep folder lists, which can cause CSS `:nth-child()` colors to shift as you scroll down. If you want every folder's rainbow color permanently fixed to its natural vault position regardless of scrolling, you can use the lightweight **FreeColors Rainbow Fixer** helper snippet/plugin included in this repository.
+
 ---
 
 ## 🎨 Features

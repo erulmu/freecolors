@@ -1,0 +1,9 @@
+{
+  "id": "freecolors-rainbow-fixer",
+  "name": "FreeColors Rainbow Fixer",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Fixes FreeColors folder colors by deterministically binding rainbow indexes to vault paths, eliminating scroll shifting.",
+  "author": "erulmu",
+  "isDesktopOnly": false
+}
