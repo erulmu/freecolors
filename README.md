@@ -26,7 +26,7 @@ Unlike traditional Obsidian themes where you edit CSS files manually, FreeColors
 
 ### Step 2: Access the Simulator
 You can use the color engine via the web or locally:
-* **Method A (Web):** Open the [FreeColors Web Simulator](https://erulmu.github.io/freecolors/) directly in your browser.
+* **Method A (Web):** Open the <a href="https://erulmu.github.io/freecolors/" target="_blank" rel="noopener noreferrer">FreeColors Web Simulator</a> directly in your browser.
 * **Method B (Local):** Download the `index.html` file from this repository and open it in any modern web browser (no internet required).
 
 ### Step 3: Generate Your Custom Colors
@@ -46,9 +46,6 @@ The Rainbow Folders module is now built directly into the theme. To activate it:
 1. Go to **Settings > Style Settings** and find the FreeColors section.
 2. Toggle **"Enable Rainbow Folders"** to **ON**.
 3. The folder hierarchy will instantly use the custom rainbow colors defined in your JSON profile.
-
-> **💡 Sticky Rainbow Colors (Helper Snippet / Micro-Plugin):**
-> Obsidian's virtualized scrolling may recycle DOM elements on deep folder lists, which can cause CSS `:nth-child()` colors to shift as you scroll down. If you want every folder's rainbow color permanently fixed to its natural vault position regardless of scrolling, you can use the lightweight **FreeColors Rainbow Fixer** helper snippet/plugin included in this repository.
 
 ---
 
