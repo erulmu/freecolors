@@ -65,5 +65,9 @@ The Rainbow Folders module is now built directly into the theme. To activate it:
 
 ---
 
-## 🤝 Acknowledgments
-This theme is built upon a fork of the excellent [Minimal Theme](https://github.com/kepano/obsidian-minimal) by kepano. The CSS foundation has been preserved while integrating the FreeColors dynamic JSON simulation engine and the built-in Rainbow module.
+## 🧩 Helper Snippets
+
+For users who want standalone or deterministic folder behavior, helper snippets are available in the `snippets/` directory:
+
+* **`snippets/freecolors-rainbow-fixer.js`**: An optional startup script (runnable via **QuickAdd** or **User Plugins**) that binds deterministic color indices to folders, preventing color cycling during virtual DOM scrolling in large vaults.
+* **`snippets/freecolors-rainbow.css`**: A standalone CSS snippet that can be activated independently in **Settings > Appearance > CSS snippets**.
