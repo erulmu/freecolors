@@ -67,12 +67,12 @@
         .mock-nav-container > .mock-root:nth-child(10n+10) { --fc-color: var(--fc-rb-c-10); --fc-icon: var(--fc-rb-i-10); --fc-muted: color-mix(in srgb, var(--fc-color) 15%, transparent); }
 
 		.mock-nav-container > .mock-root {
-		border-left: 6px solid var(--fc-color) !important;
-		border-top: 1px solid var(--fc-color) !important;
-		border-right: 1px solid var(--fc-color) !important;
-		border-bottom: 1px solid var(--fc-color) !important;
-		border-radius: 6px !important;
-		margin-bottom: 6px !important;
+		border-left: 2px solid var(--fc-color) !important;
+		border-top: 1px solid var(--fc-muted) !important;
+		border-right: 1px solid var(--fc-muted) !important;
+		border-bottom: 1px solid var(--fc-muted) !important;
+		border-radius: 5px !important;
+		margin-bottom: 5px !important;
 		background-color: transparent !important;
 		padding-bottom: 4px;
 		transition: all 0.2s ease;
@@ -284,13 +284,17 @@
 <div class="preview-wrapper">
     <div class="mock-sidebar">
         <div style="font-size: 0.75em; color: var(--tx3); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Vault Explorer</div>
-        <div class="mock-nav-container" id="mock-tree">
+        <div id="mock-file-root" style="margin-bottom: 8px;">
+            <div class="mock-nav-file" style="padding: 4px 8px; border-radius: 4px; background-color: var(--fc-muted, rgba(255,255,255,0.06)); cursor: pointer;">
+                <span class="mock-file-text" style="color: var(--ax1) !important; font-weight: 600;">Examples.md</span>
             </div>
+        </div>
+        <div class="mock-nav-container" id="mock-tree"></div>
     </div>
 
     <div class="preview-area">
         <div class="preview-content">
-            <div style="font-size: 0.75em; color: var(--tx3); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Main Editor (BG1)</div>
+            <div style="font-size: 0.75em; color: var(--tx3); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Examples.md</div>
             <h1>Heading 1 (Main Title - H1)</h1>
             <p>This is a standard text paragraph (tx1). <span class="faded">This part is secondary faded text (tx2)</span> and <span class="very-faded">this part is tertiary, more faded text (tx3)</span>.</p>
             
@@ -390,15 +394,28 @@
         generateColors();
     }
 
+    const mockVaultData = [
+        { name: "01_Getting_Started", sub: "Overview", file: "Theme_Guide.md" },
+        { name: "02_Projects", sub: "Active", file: "FreeColors_Engine.md" },
+        { name: "03_Knowledge_Base", sub: "Color_Theory", file: "Palette_Harmonies.md" },
+        { name: "04_Design_System", sub: "Components", file: "UI_Elements.md" },
+        { name: "05_Daily_Notes", sub: "2026", file: "2026-10-15.md" },
+        { name: "06_Code_Snippets", sub: "CSS_Hacks", file: "Rainbow_Scroll_Fix.md" },
+        { name: "07_Workflows", sub: "Automation", file: "JSON_Import_Export.md" },
+        { name: "08_Research", sub: "Typography", file: "Font_Hierarchy.md" },
+        { name: "09_Templates", sub: "Note_Archetypes", file: "Standard_Note.md" },
+        { name: "10_Archive", sub: "Past_Releases", file: "Release_Notes_v1.0.md" }
+    ];
+
     function buildMockTree() {
-        const treeHtml = Array.from({length: 10}).map((_, i) => `
+        const treeHtml = mockVaultData.map(item => `
             <div class="mock-nav-folder mock-root">
-                <div class="mock-nav-title"><span class="mock-folder-icon"></span><span class="mock-folder-text">0${i+1}_Main_Folder</span></div>
+                <div class="mock-nav-title"><span class="mock-folder-icon"></span><span class="mock-folder-text">${item.name}</span></div>
                 <div class="mock-nav-children">
                     <div class="mock-nav-folder">
-                        <div class="mock-nav-title"><span class="mock-folder-icon"></span><span class="mock-folder-text">01_Sub_Folder</span></div>
+                        <div class="mock-nav-title"><span class="mock-folder-icon"></span><span class="mock-folder-text" style="color: var(--tx2) !important; font-weight: 650 !important;">${item.sub}</span></div>
                         <div class="mock-nav-children">
-                            <div class="mock-nav-file"><span class="mock-file-text">File_A.md</span></div>
+                            <div class="mock-nav-file"><span class="mock-file-text">${item.file}</span></div>
                         </div>
                     </div>
                 </div>
